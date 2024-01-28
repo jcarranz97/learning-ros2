@@ -21,6 +21,7 @@ setup(
     entry_points={
         'console_scripts': [
             "py_node = udemy_tutorials_py.my_first_node:main",
+            "robot_news_station = udemy_tutorials_py.robot_news_station:main",
         ],
     },
 )
