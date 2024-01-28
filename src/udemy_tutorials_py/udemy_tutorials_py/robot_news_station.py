@@ -11,6 +11,7 @@ class RobotNewsStationNode(Node):
     def __init__(self):
         # It is always recommended to call the node as the file name
         super().__init__("robot_news_station")
+        self.__robot_name = "Arturito"
         # Create publisher
         self.__publisher = self.create_publisher(
             msg_type=String,
@@ -26,6 +27,11 @@ class RobotNewsStationNode(Node):
         self.logger.info("Robot News Station has been started.")
 
     @property
+    def robot_name(self):
+        """Get robot name."""
+        return self.__robot_name
+
+    @property
     def logger(self):
         """Get logger."""
         return self.get_logger()
@@ -34,7 +40,7 @@ class RobotNewsStationNode(Node):
         """Publish news to the topic."""
         # Create message
         msg = String()
-        msg.data = "Hi, this is Robot News Station!"
+        msg.data = f"Hi, this is {self.robot_name} from Robot News Station!"
         # Publish message
         self.__publisher.publish(msg)
 
