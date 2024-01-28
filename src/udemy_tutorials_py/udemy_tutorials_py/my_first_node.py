@@ -15,10 +15,12 @@ class MyNode(Node):
             0.5,  # Run at 2 Hz (0.5 seconds)
             self.timer_callback,  # Call timer_callback function
         )
+        self.counter = 0
 
     def timer_callback(self):
         """ Timer callback function """
-        self.logger.info("Hello World from timer callback!")
+        self.counter += 1
+        self.logger.info(f"Hello World from timer callback! ({self.counter})")
 
 
 def main(args=None):
