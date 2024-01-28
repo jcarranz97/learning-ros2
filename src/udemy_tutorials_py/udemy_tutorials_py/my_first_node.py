@@ -5,13 +5,18 @@ import rclpy
 from rclpy.node import Node
 
 
+class MyNode(Node):
+    """ MyNode class """
+    def __init__(self):
+        super().__init__("py_test")
+        self.get_logger().info("Hello World from MyNode!")
+
+
 def main(args=None):
     """ Main function """
     rclpy.init(args=args)  # This is the first thing to do in all ROS2 nodes
-    node = Node("py_test")  # Create a ROS2 node with the name "py_test"
+    node = MyNode()  # Create MyNode instance
 
-    # Print "Hello World!" to the terminal
-    node.get_logger().info("Hello World!")
     try:
         rclpy.spin(node)  # Keep the node running until it is stopped
     except KeyboardInterrupt:
