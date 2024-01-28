@@ -9,7 +9,16 @@ class MyNode(Node):
     """ MyNode class """
     def __init__(self):
         super().__init__("py_test")
-        self.get_logger().info("Hello World from MyNode!")
+        self.logger = self.get_logger()
+        self.logger.info("Hello World from MyNode!")
+        self.create_timer(
+            0.5,  # Run at 2 Hz (0.5 seconds)
+            self.timer_callback,  # Call timer_callback function
+        )
+
+    def timer_callback(self):
+        """ Timer callback function """
+        self.logger.info("Hello World from timer callback!")
 
 
 def main(args=None):
