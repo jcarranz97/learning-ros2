@@ -25,6 +25,11 @@ class NumberCount(Node):
             callback=self.callback_number_received,
             qos_profile=10,
         )
+        self.publisher = self.create_publisher(
+            msg_type=Int64,
+            topic="number_count",
+            qos_profile=10,
+        )
 
     @property
     def logger(self):
@@ -36,6 +41,15 @@ class NumberCount(Node):
         self.__count += msg.data
         self.logger.info(
             f"Received number: {msg.data}. Current count: {self.__count}")
+        self.publish_count()
+
+    def publish_count(self):
+        """Publishes the current count."""
+        msg = Int64()
+        msg.data = self.__count
+        self.publisher.publish(msg)
+        self.logger.info(f"Published count: {msg.data}")
+
 
 def main(args=None):
     """Main function that creates the node and spins it."""
