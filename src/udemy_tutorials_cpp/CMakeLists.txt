@@ -38,11 +38,16 @@ ament_target_dependencies(smartphone rclcpp example_interfaces)
 add_executable(number_publisher src/number_publisher.cpp)
 ament_target_dependencies(number_publisher rclcpp std_msgs)
 
+# Add number_counter executable
+add_executable(number_counter src/number_counter.cpp)
+ament_target_dependencies(number_counter rclcpp std_msgs)
+
 install(TARGETS
   cpp_node
   robot_news_stations
   smartphone
   number_publisher
+  number_counter
   DESTINATION lib/${PROJECT_NAME}
 )
 
