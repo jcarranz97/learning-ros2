@@ -24,6 +24,7 @@ setup(
             "robot_news_station = udemy_tutorials_py.robot_news_station:main",
             "smartphone = udemy_tutorials_py.smartphone:main",
             "number_publisher = udemy_tutorials_py.number_publisher:main",
+            "number_counter = udemy_tutorials_py.number_counter:main",
         ],
     },
 )
