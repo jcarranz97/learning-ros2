@@ -23,6 +23,7 @@ setup(
             "py_node = udemy_tutorials_py.my_first_node:main",
             "robot_news_station = udemy_tutorials_py.robot_news_station:main",
             "smartphone = udemy_tutorials_py.smartphone:main",
+            "number_publisher = udemy_tutorials_py.number_publisher:main",
         ],
     },
 )
