@@ -13,6 +13,9 @@ class AddTwoIntsClientNode(Node):
         """Create an instance of the client node."""
         super().__init__("add_two_ints_client_oop")
         self.call_service(AddTwoInts.Request(a=3, b=4))
+        self.call_service(AddTwoInts.Request(a=5, b=6))
+        self.call_service(AddTwoInts.Request(a=7, b=8))
+        self.call_service(AddTwoInts.Request(a=9, b=10))
 
     def call_service(self, request):
         """Call the service."""
