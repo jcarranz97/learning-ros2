@@ -30,12 +30,17 @@ class NumberCounter : public rclcpp::Node
             // Increment the counter
             counter_ += msg->data;
             RCLCPP_INFO(this->get_logger(), "Counter: %d", counter_);
+            this->publish_counter();
+        }
+
+        void publish_counter()
+        {
             // Publish the counter value
             auto message = std_msgs::msg::Int64();
             message.data = counter_;
             publisher_->publish(message);
             RCLCPP_INFO(this->get_logger(),
-                        "Counter value has been published.");
+                        "Counter value has been published (from function).");
         }
         int counter_ = 0;
         rclcpp::Subscription<std_msgs::msg::Int64>::SharedPtr subscriber_;
