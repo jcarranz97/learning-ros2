@@ -27,6 +27,7 @@ setup(
             "number_counter = udemy_tutorials_py.number_counter:main",
             "add_two_ints_server = udemy_tutorials_py.add_two_ints_server:main",
             "add_two_ints_client_no_oop = udemy_tutorials_py.add_two_ints_client_no_oop:main",
+            "add_two_ints_client_oop = udemy_tutorials_py.add_two_ints_client_oop:main",
         ],
     },
 )
