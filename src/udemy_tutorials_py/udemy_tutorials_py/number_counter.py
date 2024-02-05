@@ -12,6 +12,7 @@ import sys
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Int64
+from example_interfaces.srv import SetBool
 
 
 class NumberCount(Node):
@@ -30,6 +31,13 @@ class NumberCount(Node):
             topic="number_count",
             qos_profile=10,
         )
+        self.reset_counter_service = self.create_service(
+            srv_type=SetBool,
+            srv_name="reset_counter",
+            callback=self.callback_reset_counter,
+        )
+        self.logger.info("Number Counter has been started.")
+        self.logger.info(f"Counter: {self.__count}")
 
     @property
     def logger(self):
@@ -49,6 +57,16 @@ class NumberCount(Node):
         msg.data = self.__count
         self.publisher.publish(msg)
         self.logger.info(f"Published count: {msg.data}")
+
+    def callback_reset_counter(self, request, response):
+        """Callback function for the reset counter service."""
+        current_value = self.__count
+        if request.data:
+            self.__count = 0
+            self.logger.info("Counter reset.!!!")
+        response.success = True
+        response.message = f"Counter reset. Old Value: {current_value}"
+        return response
 
 
 def main(args=None):
