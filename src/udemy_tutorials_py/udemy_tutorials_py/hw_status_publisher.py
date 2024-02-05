@@ -9,6 +9,9 @@ from udemy_tutorials_interfaces.msg import HardwareStatus
 
 
 class HardwareStatusPublisher(Node):
+    """Create a node that publishes to the hw_status topic using the
+       custom HardwareStatus message from the udemy_tutorials_interfaces
+    """
     def __init__(self):
         """Intialize the node and create a publisher to the topic."""
         super().__init__("hw_status_publisher")
@@ -27,6 +30,7 @@ class HardwareStatusPublisher(Node):
 
     @property
     def logger(self):
+        """Return the logger for the node."""
         return self.get_logger()
 
     def publish_hw_status(self):
