@@ -15,6 +15,7 @@ find_package(rosidl_default_generators REQUIRED)
 # Generate new msg interface
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/HardwareStatus.msg"
+  "srv/ComputeRectangleArea.srv"
 )
 
 if(BUILD_TESTING)
