@@ -1,6 +1,9 @@
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/int64.hpp"
+#include "example_interfaces/srv/set_bool.hpp"
 
+using std::placeholders::_1;
+using std::placeholders::_2;
 
 class NumberCounter : public rclcpp::Node
 {
@@ -22,6 +25,10 @@ class NumberCounter : public rclcpp::Node
                 "number_count",
                 10
             );
+            service_ = this->create_service<example_interfaces::srv::SetBool>(
+                "reset_counter",
+                std::bind(&NumberCounter::callback_reset_counter, this, _1, _2)
+            );
         } 
 
     private:
@@ -42,9 +49,27 @@ class NumberCounter : public rclcpp::Node
             RCLCPP_INFO(this->get_logger(),
                         "Counter value has been published (from function).");
         }
+
+        void callback_reset_counter(const example_interfaces::srv::SetBool::Request::SharedPtr request,
+                                    const example_interfaces::srv::SetBool::Response::SharedPtr response)
+        {
+            if (request->data)
+            {
+                counter_ = 0;
+                RCLCPP_INFO(this->get_logger(), "Counter has been reset.");
+                response->success = true;
+                response->message = "Counter has been reset.";
+            }
+            else
+            {
+                response->success = false;
+                response->message = "Counter has not been reset.";
+            }
+        }
         int counter_ = 0;
         rclcpp::Subscription<std_msgs::msg::Int64>::SharedPtr subscriber_;
         rclcpp::Publisher<std_msgs::msg::Int64>::SharedPtr publisher_;
+        rclcpp::Service<example_interfaces::srv::SetBool>::SharedPtr service_;
 };
 
 
