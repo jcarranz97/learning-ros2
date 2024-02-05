@@ -30,6 +30,7 @@ setup(
             "add_two_ints_client_oop = udemy_tutorials_py.add_two_ints_client_oop:main",
             "hw_status_publisher = udemy_tutorials_py.hw_status_publisher:main",
             "compute_rectangle_area_server = udemy_tutorials_py.compute_rectangle_area_server:main",
+            "battery_node = udemy_tutorials_py.battery_node:main",
         ],
     },
 )
