@@ -31,6 +31,7 @@ setup(
             "hw_status_publisher = udemy_tutorials_py.hw_status_publisher:main",
             "compute_rectangle_area_server = udemy_tutorials_py.compute_rectangle_area_server:main",
             "battery_node = udemy_tutorials_py.battery_node:main",
+            "led_panel_node = udemy_tutorials_py.led_panel_node:main",
         ],
     },
 )

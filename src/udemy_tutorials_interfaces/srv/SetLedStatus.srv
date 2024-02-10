@@ -2,3 +2,4 @@ int32 led_number
 bool state
 ---
 bool success
+string message
